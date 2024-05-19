@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Пользователи -->
+            <div class="col-md-12">
+                <div class=" bg-white p-4 mb-4 mx-1" style="border-radius: 15px; border: #5a4531 solid 1px; box-shadow: 0px 0px 10px #5a4531; width: 750px;">
+                    <h3 class="text-center mb-4">Пользователи</h3>
+                    <!-- Разметка таблиц -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="username" class="form-label">Имя пользователя: </label><br>
+                        <input class="form-control" type="text" id="username" name="username" value="{{ user.username }}"><br>
+                        <label for="first_name" class="form-label">Имя</label><br>
+                        <input class="form-control" type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br><br>
+                        <label for="last_name" class="form-label">Фамилия</label><br>
+                        <input class="form-control" type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br><br>
+                        <label for="email" class="form-label">Почта</label><br>
+                        <input class="form-control" type="text" id="email" name="email" value="{{ user.email }}"><br><br>
+                        <label for="image" class="form-label">Аватар</label><br>
+                        <input class="form-control" type="file" id="image" name="image"><br><br>
+                        <label for="is_staff" class="form-label">Персонал</label>
+                        <input type="checkbox" id="is_staff" name="is_staff" {% if user.is_staff %}checked{% endif %} value="True"><br><br>
+                        <strong><a href="{% url "user:admin-panel" %}" style="float: left; color:#68370f; font-size: 18px;"><p>Вернуться</p></a></strong>
+                        <input type="submit" class="btn" style="background-color: #efd5bc; color: #33200e; border: #5a4531 solid 1px; margin-left: 30%;" 
+                        value="Сохранить">
+                    </form>
+                    
+                    <!-- Закончилась разметка заказов -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

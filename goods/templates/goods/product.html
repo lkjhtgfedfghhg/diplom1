@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock modal_cart %}
+
+{% block content %}
+
+<div style="height: 100%; width: 134.15%; padding-left: 20%; padding-right: 19%; padding-top: 5%; padding-bottom: 3%; margin-top: -2.2%; margin-right: 0%; margin-left: -27.30%;
+border-left: solid #ccbcb5 2px; border-right: solid #ccbcb5 2px; ">
+
+    <div class="container mt-5">
+        <div class="card mb-4" style="margin-left: 10%; width: 725px; border-radius: 15px; border: #5a4531 solid 1px; box-shadow: 0px 0px 15px #5a4531;">
+            <div class="row">
+                <!-- Миниатюры -->
+                <div class="col-md-4">
+                    <img style="margin: 1%;" src="{{ product.image.url }}" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                </div>
+                <div class="col-md-6 ">
+                    <p class="card-text" style="margin-left: 10%; margin-top: 20%; font-size: 20px; text-align: justify;">{{ product.description }}</p>
+                </div>
+                <!-- Увеличить изображение в модальном окне -->
+                <div class="modal fade" id="imageModal1" tabindex="-1"
+                    aria-labelledby="imageModal1Label" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{{ product.image.url }}"
+                                    class="img-fluid" alt="Изображение 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Описание товара -->
+            <div class="card-body">
+                <p class="card-text">Цена: <strong>{{ product.sell_price }} ₽</strong></p>
+                <h5 class="card-title">{{ product.name }}</h5>
+                <a style="background-color: #efd5bc; color: #33200e; border: #5a4531 solid 1px; margin-left: 40%;" href="{% url "cart:cart_add" %}" class="btn btn-dark add-to-cart"
+                data-product-id="{{ product.id }}">
+                {% csrf_token %}
+                Добавить в корзину</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+{% block footer %}
+    <footer style="border-radius: 0 0 10px 10px; border: solid #ccbcb5 2px;  margin-bottom: 30px; background-color: #f9ece6; width: 100%; height: 84px; margin-left: 0;">
+        <div class="container" >
+            <br><p class="m-0 text-center text-black" style="font-size: 19px;">&copy; 2024</p>
+        </div>
+    </footer>
+{% endblock footer %}

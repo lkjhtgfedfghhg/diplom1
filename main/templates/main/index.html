@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+{% endblock css %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock modal_cart %}
+
+{% block content %}
+
+<style>
+
+/**** slider ****/
+
+#slider
+{
+	height: 200px;
+}
+
+#slider
+{
+    border-left: solid #ccbcb5 2px; 
+    border-right: solid #ccbcb5 2px;
+	overflow: hidden;
+    padding: 20px;
+    margin-top: -2.25%;
+    position: relative;
+    width: 134.15%;
+    margin-left: -27.25%;
+    height: 500px;
+    background-color: rgba(76, 48, 25, 0.55)
+}
+
+#slider li
+{
+	float: left;
+	position: relative;
+	width: 450px;
+	display: inline-block;
+	height: 200px;
+}
+
+#slider ul
+{
+	list-style: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 9000px;
+	transition: left .3s linear;
+	-moz-transition: left .3s linear;
+	-o-transition: left .3s linear;
+	-webkit-transition: left .3s linear;
+	margin-left: -25px;
+  font-family: century gothic;
+  color: #666;
+}
+
+/*** Content ***/
+
+.slider-container
+{
+	margin: 0 auto;
+	padding: 0;
+	width: 134.15%;
+  min-height: 180px;
+  border-bottom: 1px solid #ccc;
+}
+
+.slider-container h4
+{
+ 	color: #0A7FAD;
+  text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.50);
+}
+
+.slider-container  p
+{
+	margin: 10px 25px;
+	font-weight: semi-bold;
+	line-height: 150%;
+	text-align: justify;
+}
+
+/*** target hooks ****/
+
+@-webkit-keyframes slide-animation {
+	0% {opacity:0;}
+	2% {opacity:1;}
+	20% {left:0px; opacity:1;}
+	22.5% {opacity:0.6;}
+	25% {left:-600px; opacity:1;}
+	45% {left:-600px; opacity:1;}
+	47.5% {opacity:0.6;}
+	50% {left:-1200px; opacity:1;}
+	70% {left:-1200px; opacity:1;}
+	72.5% {opacity:0.6;}
+	75% {left:-1800px; opacity:1;}
+	95% {opacity:1;}
+	98% {left:-1800px; opacity:0;} 
+	100% {left:0px; opacity:0;}
+}
+
+#slider ul
+{
+	-webkit-animation: slide-animation 10s infinite;
+}
+
+/* use to paused the content on mouse over */
+
+#slider ul:hover
+{
+	-moz-animation-play-state: paused;
+	-webkit-animation-play-state: paused;
+}
+</style>
+
+<div id="slider">
+    <ul>
+        <li>
+        <div class="slider-container">
+            <img src="{% static "deps/images/slider/slider-img3.png" %}" >
+        </div>
+        </li>
+            <li>
+            <div class="slider-container">
+           <img src="{% static "deps/images/slider/slider-img2.png" %}" style="">
+        </div>
+        </li>
+            <li>
+            <div class="slider-container">
+           <img src="{% static "deps/images/slider/slider-img1.png" %}" style="">
+        </div>
+        </li>
+            <li>
+            <div class="slider-container">
+           <img src="{% static "deps/images/slider/slider-img4.png" %}" style="">
+        </div>
+        </li>
+            <li>
+            <div class="slider-container">
+           <img src="{% static "deps/images/slider/slider-img5.png" %}" style="">
+        </div>
+    </ul>
+</div>
+
+<div class="row" style="width: 134.15%; padding-left: 23%; padding-right: 22%; margin-right: 0%; margin-left: -27.30%; border-left: solid #ccbcb5 2px; border-right: solid #ccbcb5 2px; ">
+    
+    {% for product in products %}
+        <div class="col-lg-4 col-md-6 p-4" style="margin-top: 5%;">
+            <div class="card" style="height: 300px; width: 270px; border-radius: 3px; box-shadow: 0px 0px 7px #5a4531; background-color:#fef9f6;">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="margin-left: 20%;width: 170px; height: 170px;">
+                {% else %}
+                    <img style="margin-left: 20%;width: 170px; height: 170px;" src="{% static "deps/images/Not found image.png" %}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <a href='{% url "catalog:product" product.slug %}' style="text-decoration: none;">
+                        <p class="card-title text-uppercase" style="color: #5a4531; font-size: 23px; font-family: Candara, sans-serif; text-align: left;">
+                            {% autoescape off %}
+                                {% if product.headline %}
+                                    {{ product.headline }}
+                                {% else %}
+                                    {{ product.name }}
+                                {% endif %}
+                            {% endautoescape %}
+                        </p>
+                    </a>
+                    
+                    <div class="d-flex justify-content-between">
+                        {% if product.discount %}
+                            <p><s>{{ product.price }} ₽</s></p>
+                            <p><strong>{{ product.sell_price }} ₽</strong></p>
+                            <span class="badge bg-warning text-dark" style="box-shadow: 0 0 6px black;">Скидка {{ product.discount }} %</span>
+                        {% else %}
+                            <p><strong>{{ product.price }} ₽</strong></p>
+                        {% endif %}
+
+                            <a href="{% url "cart:cart_add" %}" class="btn add-to-cart" data-product-id="{{ product.id }}">
+                                {% csrf_token %}
+                                <img class="mx-1" src="{% static "deps/icons/icon-cart-add.png" %}" alt="Catalog Icon" width="32" height="32">
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+    
+    <div style="border-left: solid #ccbcb5 2px; border-right: solid #ccbcb5 2px; height: 500px; background-color: #fae7d4; width: 134.10%;margin-left: -27.25%;margin-bottom: 0;">
+        <img src="{% static "deps/images/banner.png" %}" style="height: auto; width: 400px; margin-top: 5%; margin-left: 5%;">
+        <h1 style="float: right; text-align: center; margin-top: 200px; margin-right: 200px;">ХОРОШИЙ ДЕНЬ <br>НАЧИНАЕТСЯ С КОФЕ</h1>
+
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer style="border-radius: 0 0 10px 10px; border: solid #ccbcb5 2px; margin-bottom: 30px; background-color: #f9ece6; width: 100%; height: 84px; margin-left: 0;">
+        <div class="container" >
+            <br><p class="m-0 text-center text-black" style="font-size: 19px;">&copy; 2024</p>
+        </div>
+    </footer>
+{% endblock footer %}

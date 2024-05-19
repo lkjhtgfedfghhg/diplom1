@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Товары -->
+            <div class="col-md-12">
+                <div class=" bg-white p-4 mb-4 mx-1" style="border-radius: 15px; border: #5a4531 solid 1px; box-shadow: 0px 0px 10px #5a4531; width: 750px;">
+                    <h3 class="text-center mb-4">Товары</h3>
+                    <!-- Разметка таблиц -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="name" class="form-label">Название: </label><br>
+                        <input class="form-control" type="text" id="name" name="name" value="{{ product.name }}"><br>
+                        <label for="slug" class="form-label">URL</label><br>
+                        <input class="form-control" type="text" id="slug" name="slug" value="{{ product.slug }}"><br><br>
+                        <label for="description" class="form-label">Описание</label><br>
+                        <input style="height: 200px;" class="form-control" type="text" id="description" name="description" value="{{ product.description }}"><br><br>
+                        <label for="quantity" class="form-label">Количество</label><br>
+                        <input class="form-control" type="number" id="quantity" name="quantity" value="{{ product.quantity }}"><br><br>
+                        <label for="price" class="form-label">Цена</label><br>
+                        <input class="form-control" type="number" id="price" name="price" value="{{ product.price }}"><br><br>
+                        <label for="discount" class="form-label">Скидка</label><br>
+                        <input class="form-control" type="number" id="discount" name="discount" value="{{ product.discount }}"><br><br>
+                        <label for="image" class="form-label">Изображение</label><br>
+                        <input class="form-control" type="file" id="image" name="image"><br><br>
+                        <label for="category" class="form-label">Категория</label><br>
+                        <select id="category" name="category" class="form-control">
+                            {% for category in categories %}
+                                <option>{{ category.name }}</option>
+                            {% endfor %}
+                        </select><br>
+                        <strong><a href="{% url "user:admin-panel" %}" style="float: left; color:#68370f; font-size: 18px;"><p>Вернуться</p></a></strong>
+                        <input type="submit" class="btn" style="background-color: #efd5bc; color: #33200e; border: #5a4531 solid 1px; margin-left: 30%" value="Сохранить">
+                    </form>
+                    
+                    <!-- Закончилась разметка заказов -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

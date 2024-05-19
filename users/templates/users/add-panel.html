@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Товары -->
+            <div class="col-md-12">
+                <div class=" bg-white p-4 mb-4 mx-1" style="border-radius: 15px; border: #5a4531 solid 1px; box-shadow: 0px 0px 10px #5a4531; width: 750px;">
+                    <h3 class="text-center mb-4">Заказы</h3>
+                    <!-- Разметка таблиц -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label for="user" class="form-label">Пользователь: </label><br>
+                        <input class="form-control" type="text" id="user" name="user" value="{{ order.user }}"><br>
+                        <label for="address" class="form-label">Доставка</label><br>
+                        <input class="form-control" type="text" id="address" name="address" value="{{ order.delivery_address }}"><br><br>
+                        <label for="status" class="form-label">Статус</label><br>
+                        <select id="status" name="status" class="form-control">
+                            <option>Принят</option>
+                            <option>Готовится</option>
+                            <option>Готов</option>
+                            <option>Заказ выдан</option>
+                        </select><br>
+                        <label for="table_number" class="form-label">Номер стола: </label><br>
+                        <input class="form-control" type="text" id="table_number" name="table_number" value="{{ order.table_number }}"><br>
+                        <label for="payment_on_get" class="form-label">Оплата при получении</label>
+                        <input type="checkbox" id="payment_on_get" name="payment_on_get" {% if order.payment_on_get %}checked{% endif %} value="True"><br><br>
+                        <label for="is_paid" class="form-label">Оплачено</label>
+                        <input type="checkbox" id="is_paid" name="is_paid" {% if order.is_paid %}checked{% endif %} value="True"><br><br>
+                        <strong><a href="{% url "user:admin-panel" %}" style="float: left; color:#68370f; font-size: 18px;"><p>Вернуться</p></a></strong>
+                        <input type="submit" class="btn" style="background-color: #efd5bc; color: #33200e; border: #5a4531 solid 1px; margin-left: 30%;" 
+                        value="Сохранить">
+                    </form>
+                    
+                    <!-- Закончилась разметка заказов -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

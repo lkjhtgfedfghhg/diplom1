@@ -1,0 +1,174 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 1,
+        "fields": {
+            "name": "Чайный столик и три стула",
+            "slug": "chajnyj-stolik-i-tri-stula",
+            "description": "Уютный набор для чаепития с друзьями или семьей, который добавит красок и уюта в ваш интерьер.",
+            "image": "",
+            "price": "150.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 5
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 2,
+        "fields": {
+            "name": "Чайный столик и два стула",
+            "slug": "chajnyj-stolik-i-dva-stula",
+            "description": "Стильный набор с двумя стульями для чаепития в уютной обстановке или на открытой террасе.",
+            "image": "",
+            "price": "93.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 5
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "Двуспальная кровать",
+            "slug": "dvuhspalnaya-krovat",
+            "description": "Удобная двуспальная кровать с элегантным дизайном, которая станет украшением вашей спальни.",
+            "image": "",
+            "price": "670.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 6
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "Кухонный стол с раковиной",
+            "slug": "kuhonnyj-stol-s-rakovinoj",
+            "description": "Кухонный стол с раковиной для удобной приготовки пищи и хранения кухонной утвари.",
+            "image": "",
+            "price": "365.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 5
+        }
+    },
+   
+    {
+        "model": "goods.products",
+        "pk": 5,
+        "fields": {
+            "name": "Кухонный стол с встроенной плитой",
+            "slug": "kuhonnyj-stol-s-vstrojkoj",
+            "description": "Кухонный стол с встроенной плитой для приготовления пищи. Идеально подходит для небольших кухонь.",
+            "image": "",
+            "price": "430.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 5
+        }
+    },
+
+       {
+        "model": "goods.products",
+        "pk": 6,
+        "fields": {
+            "name": "Угловой диван для гостинной",
+            "slug": "uglovoj-divan-dlya-gostinnoj",
+            "description": "Угловой диван, который поможет создать уютную атмосферу в гостиной, обеспечивая комфортное размещение гостей и семьи.",
+            "image": "",
+            "price": "610.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 7
+        }
+       },
+
+     {
+        "model": "goods.products",
+        "pk": 7,
+        "fields": {
+            "name": "Прикроватный столик",
+            "slug": "prikrovatnyj-stolik",
+            "description": "Прикроватный столик для удобного размещения необходимых вещей (книги, очки, напитки) рядом с кроватью.",
+            "image": "",
+            "price": "55.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 6
+        }
+     },
+
+        {
+        "model": "goods.products",
+        "pk": 8,
+        "fields": {
+            "name": "Диван обыкновенный",
+            "slug": "divan-obyknovennyj",
+            "description": "Диван, который станет центром вашего интерьера, обеспечивая уютное место для отдыха и развлечений.",
+            "image": "",
+            "price": "190.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 7
+        }
+        },
+    {
+        "model": "goods.products",
+        "pk": 9,
+        "fields": {
+            "name": "Стол офисный",
+            "slug": "stul-ofisnyj",
+            "description": "Офисный стол, который поможет вам создать удобное рабочее пространство, где вы сможете эффективно работать и достигать своих целей...",
+            "image": "",
+            "price": "30.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 8
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 10,
+        "fields": {
+            "name": "Растение",
+            "slug": "rastenie",
+            "description": "Растение для украшения интерьера и создания уютной атмосферы в помещении.",
+            "image": "",
+            "price": "10.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 10
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 11,
+        "fields": {
+            "name": "Цветок стилизированный",
+            "slug": "cvetok-stilizirovannyj",
+            "description": "Искусственный цветок (тюлевый материал) для украшения интерьера.",
+            "image": "",
+            "price": "15.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 10
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 12,
+        "fields": {
+            "name": "Прикроватный стол",
+            "slug": "prikrovatnyj-stol",
+            "description": "Прикроватный стол, удобный элемент туалетного столика, который поможет вам хранить необходимые предметы рядом с кроватью.",
+            "image": "",
+            "price": "25.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 9
+        }
+    }
+]
